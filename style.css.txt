@@ -1,0 +1,22 @@
+/* style.css */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap');
+
+body { 
+    font-family: 'Cairo', sans-serif; 
+    background-color: #f8fafc; 
+}
+
+/* تأثيرات حركية بسيطة */
+.product-card { 
+    transition: all 0.3s ease; 
+    cursor: pointer; 
+}
+
+.product-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); 
+}
+
+/* إخفاء شريط التمرير في بعض الأماكن */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maro Shop - الرئيسية</title>
+    <!-- استدعاء Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- استدعاء ملف التنسيقات -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 pb-20">
+
+    <!-- الهيدر -->
+    <header class="bg-red-600 text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="text-2xl font-black cursor-pointer" onclick="window.location.reload()">MARO <span class="text-orange-500">SHOP</span></div>
+            <a href="cart.html" class="relative flex items-center gap-2 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 transition">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <span>السلة</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- البانر -->
+    <section class="bg-gradient-to-r from-red-600 to-orange-500 text-white p-12 text-center shadow-inner">
+        <h1 class="text-4xl font-black mb-2 animate-pulse">أهلاً بك في Maro Shop</h1>
+        <p class="text-lg opacity-90">تسوق بأفضل الأسعار وأعلى جودة</p>
+    </section>
+
+    <!-- الأقسام -->
+    <section class="container mx-auto p-4 mt-8">
+        <h2 class="text-2xl font-bold mb-6 text-gray-800 border-r-4 border-red-600 pr-3">تسوق حسب القسم</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4" id="categories-grid">
+            <!-- سيتم ملؤها بالجافاسكريبت -->
+        </div>
+    </section>
+
+    <!-- منتجات مميزة -->
+    <section class="container mx-auto p-4 mt-8">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-2xl font-bold text-gray-800">أحدث المنتجات</h2>
+            <span class="text-sm text-gray-500">عروض حصرية</span>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="featured-products">
+            <!-- سيتم ملؤها -->
+        </div>
+    </section>
+
+    <!-- استدعاء البيانات والسكريبت -->
+    <script src="data.js"></script>
+    <script>
+        const catContainer = document.getElementById('categories-grid');
+        const prodContainer = document.getElementById('featured-products');
+
+        // عرض الأقسام
+        categories.forEach(cat => {
+            if(cat.id === 'all') return;
+            const div = document.createElement('div');
+            div.className = 'bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-lg transition hover:bg-red-50 group border border-gray-100';
+            div.onclick = () => window.location.href = `category.html?cat=${cat.id}`;
+            div.innerHTML = `
+                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-600 group-hover:text-white transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+                </div>
+                <h3 class="font-bold text-gray-700 group-hover:text-red-600 transition">${cat.name}</h3>
+            `;
+            catContainer.appendChild(div);
+        });
+
+        // عرض المنتجات
+        productsData.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'product-card bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100';
+            div.onclick = () => window.location.href = `product.html?id=${p.id}`;
+            div.innerHTML = `
+                <div class="relative aspect-square bg-gray-100 overflow-hidden">
+                    <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                </div>
+                <div class="p-4">
+                    <h3 class="font-bold text-gray-800 mb-2 truncate">${p.name}</h3>
+                    <div class="flex justify-between items-center">
+                        <p class="text-red-600 font-bold text-lg">${p.price.toLocaleString()} د.ج</p>
+                        <button class="bg-gray-100 p-2 rounded-full text-red-600 hover:bg-red-600 hover:text-white transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+            prodContainer.appendChild(div);
+        });
+    </script>
+</body>
+</html>
