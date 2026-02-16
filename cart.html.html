@@ -131,7 +131,7 @@
             cart.forEach(item => { total += item.price * item.qty; message += `- ${item.name} (x${item.qty}) : ${(item.price * item.qty).toLocaleString()} د.ج %0A`; });
             message += `----------------%0A*المجموع:* ${total.toLocaleString()} د.ج`;
             localStorage.removeItem('maroCart');
-            window.open(`https://wa.me/213600000000?text=${message}`, '_blank');
+            window.open(`https://wa.me/+213775739494?text=${message}`, '_blank');
         }
 
         function handleSearch(event) {
@@ -143,4 +143,5 @@
     </script>
 </body>
 </html>
+
 
