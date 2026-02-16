@@ -134,25 +134,43 @@
             container.innerHTML = `<div class="p-10 text-center flex flex-col items-center"><div class="text-red-500 mb-4"><svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><h2 class="text-2xl font-bold text-gray-800 mb-2">المنتج غير موجود</h2><p class="text-gray-500 mb-6">عذراً، لم نتمكن من العثور على المنتج.</p><a href="index.html" class="inline-block bg-red-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-red-700">العودة للرئيسية</a></div>`;
         }
 
-        function handleQuickBuy(e) {
-            e.preventDefault();
-            if(!product) return;
-            const name = document.getElementById('qb-name').value;
-            const phone = document.getElementById('qb-phone').value;
-            const wilaya = document.getElementById('qb-wilaya').value;
-            const address = document.getElementById('qb-address').value;
-            let message = `*🛒 طلب جديد (شراء سريع)* %0A%0A*📦 المنتج:* ${product.name} %0A*💰 السعر:* ${product.price.toLocaleString()} د.ج %0A-------------------%0A*👤 بيانات العميل:* %0Aالاسم: ${name} %0Aالهاتف: ${phone} %0Aالولاية: ${wilaya} %0Aالعنوان: ${address} %0A-------------------%0Aتم الطلب مباشرة من صفحة المنتج.`;
-            const phoneNumber = "213600000000"; 
-            window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
-        }
+        function handleCartCheckout(e) {
+    e.preventDefault();
+    
+    const name = document.getElementById('c-name').value;
+    const phone = document.getElementById('c-phone').value;
+    const wilaya = document.getElementById('c-wilaya').value;
+    const address = document.getElementById('c-address').value;
 
-        function handleSearch(event) {
-            if (event.key === 'Enter') {
-                const query = event.target.value;
-                if(query.trim() !== "") window.location.href = `search.html?q=${query}`;
-            }
+    let message = `*طلب جديد (من السلة)* %0A%0A`;
+    message += `----------------%0A`;
+    message += `*بيانات العميل:* %0A`;
+    message += `الاسم: ${name} %0A`;
+    message += `الهاتف: ${phone} %0A`;
+    message += `الولاية: ${wilaya} %0A`;
+    message += `العنوان: ${address} %0A`;
+    message += `----------------%0A`;
+    message += `*المنتجات:* %0A`;
+    
+    let total = 0;
+    cart.forEach(item => {
+        total += item.price * item.qty;
+        message += `- ${item.name} (x${item.qty}) : ${(item.price * item.qty).toLocaleString()} د.ج %0A`;
+    });
+
+    message += `----------------%0A`;
+    message += `*المجموع:* ${total.toLocaleString()} د.ج`;
+
+    localStorage.removeItem('maroCart');
+    
+    // ==========================================
+    // غيّر الرقم هنا أيضاً (نفس الرقم)
+    // ==========================================
+    window.open(`https://wa.me/213775739494?text=${message}`, '_blank');
+}
         }
     </script>
 </body>
 </html>
+
 
