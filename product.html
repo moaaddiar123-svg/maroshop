@@ -8,99 +8,29 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50 pb-20">
-    <header <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نتائج البحث</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-gray-50 pb-20">
-    <header class="bg-red-600 text-white p-4 shadow-md sticky top-0 z-50">
-        <div class="container mx-auto flex items-center gap-4">
-            <a href="index.html" class="hover:bg-white/10 p-2 rounded-full transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-            </a>
-            <h1 class="text-xl font-bold">نتائج البحث</h1>
-            <div class="mr-auto">
+    <!-- الهيدر (معدل ليشمل زر الرجوع + البحث) -->
+    <header class="bg-red-600 text-white p-4 sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <!-- الصف العلوي: العودة، العنوان، السلة -->
+            <div class="flex justify-between w-full md:w-auto items-center">
+                <button onclick="history.back()" class="hover:bg-white/10 p-2 rounded-full transition">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <h1 class="text-lg font-bold">تفاصيل المنتج</h1>
                 <a href="cart.html" class="relative flex items-center gap-1 bg-white/10 px-3 py-1 rounded-full hover:bg-white/20 transition">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
                     <span id="cart-count" class="bg-orange-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
                 </a>
             </div>
+            <!-- الصف السفلي: البحث -->
+            <div class="w-full md:w-1/2 relative">
+                <input type="text" placeholder="ابحث عن منتج آخر..." class="w-full p-2.5 pl-10 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-400 shadow-inner" onkeydown="handleSearch(event)">
+                <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </div>
         </div>
-    </header>
-
-    <main class="container mx-auto p-4 mt-6">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">
-            نتائج بحث عن: <span id="search-query" class="text-red-600">...</span>
-        </h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="search-results">
-            <!-- النتائج ستظهر هنا -->
-        </div>
-    </main>
-
-    <script src="data.js"></script>
-    <script>
-        // 1. الحصول على كلمة البحث من الرابط
-        const urlParams = new URLSearchParams(window.location.search);
-        const query = urlParams.get('q'); // q تعني query
-        
-        const resultsContainer = document.getElementById('search-results');
-        const querySpan = document.getElementById('search-query');
-
-        if (query) {
-            // عرض الكلمة في العنوان
-            querySpan.innerText = query;
-
-            // 2. البحث في البيانات
-            // نقوم بتحويل الكلمة والاسم لأحرف صغيرة للمقارنة
-            const lowerQuery = query.toLowerCase();
-            
-            const filteredProducts = productsData.filter(product => {
-                return product.name.toLowerCase().includes(lowerQuery) || 
-                       product.cat.toLowerCase().includes(lowerQuery);
-            });
-
-            // 3. عرض النتائج
-            if (filteredProducts.length === 0) {
-                resultsContainer.innerHTML = `
-                    <div class="col-span-full text-center py-20 bg-white rounded-xl shadow-sm border border-gray-100">
-                        <p class="text-gray-500 text-lg">عذراً، لم نعثر على منتجات تطابق "<b>${query}</b>"</p>
-                        <a href="index.html" class="text-red-600 font-bold mt-4 inline-block">العودة للرئيسية</a>
-                    </div>
-                `;
-            } else {
-                filteredProducts.forEach(p => {
-                    const link = document.createElement('a');
-                    link.href = `product.html?id=${p.id}`;
-                    link.className = 'product-card block bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100';
-                    link.innerHTML = `
-                        <div class="relative aspect-square bg-gray-100 overflow-hidden">
-                            <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-bold text-gray-800 mb-2 truncate">${p.name}</h3>
-                            <div class="flex justify-between items-center">
-                                <span class="text-red-600 font-bold">${p.price.toLocaleString()} د.ج</span>
-                            </div>
-                        </div>
-                    `;
-                    resultsContainer.appendChild(link);
-                });
-            }
-        } else {
-            resultsContainer.innerHTML = '<p class="text-center text-gray-500 col-span-full">الرجاء إدخال كلمة للبحث.</p>';
-        }
-    </script>
-</body>
-</html>
     </header>
 
     <main class="container mx-auto p-4 max-w-4xl mt-6">
-        <!-- 1. عرض تفاصيل المنتج -->
         <div class="bg-white rounded-2xl shadow-lg overflow-hidden mb-8" id="product-detail">
             <div class="p-10 text-center flex flex-col items-center justify-center h-64">
                 <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600 mb-4"></div>
@@ -108,57 +38,22 @@
             </div>
         </div>
 
-        <!-- 2. قسم الشراء السريع (Quick Buy) -->
         <div class="bg-white rounded-2xl shadow-lg p-6 border-t-4 border-green-500 animate-fade-in-up">
             <h2 class="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
                 <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                 طلب سريع (شراء هذا المنتج الآن)
             </h2>
-            <p class="text-gray-500 text-sm mb-6">أكمل بياناتك أدناه لإرسال طلب هذا المنتج فوراً عبر واتساب دون الدخول للسلة.</p>
-            
+            <p class="text-gray-500 text-sm mb-6">أكمل بياناتك أدناه لإرسال طلب هذا المنتج فوراً عبر واتساب.</p>
             <form id="quick-buy-form" onsubmit="handleQuickBuy(event)" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">الاسم الكامل *</label>
-                        <input type="text" id="qb-name" required placeholder="مثال: أحمد بن علي" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">رقم الهاتف *</label>
-                        <input type="tel" id="qb-phone" required placeholder="05XX XX XX XX" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition">
-                    </div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">الاسم الكامل *</label><input type="text" id="qb-name" required placeholder="مثال: أحمد بن علي" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition"></div>
+                    <div><label class="block text-sm font-bold text-gray-700 mb-1">رقم الهاتف *</label><input type="tel" id="qb-phone" required placeholder="05XX XX XX XX" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition"></div>
                 </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">الولاية *</label>
-                    <select id="qb-wilaya" required class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition">
-                        <option value="">اختر الولاية...</option>
-                        <option value="الجزائر">الجزائر</option>
-                        <option value="وهران">وهران</option>
-                        <option value="قسنطينة">قسنطينة</option>
-                        <option value="سطيف">سطيف</option>
-                        <option value="البليدة">البليدة</option>
-                        <option value="عنابة">عنابة</option>
-                        <option value="الشارقة">الشارقة</option>
-                        <option value="أخرى">ولاية أخرى</option>
-                    </select>
-                </div>
-
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">العنوان التفصيلي *</label>
-                    <textarea id="qb-address" required placeholder="الحي، اسم الشارع، رقم العمارة/المنزل..." class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition" rows="3"></textarea>
-                </div>
-                
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">الولاية *</label><select id="qb-wilaya" required class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition"><option value="">اختر الولاية...</option><option value="الجزائر">الجزائر</option><option value="وهران">وهران</option><option value="قسنطينة">قسنطينة</option><option value="سطيف">سطيف</option><option value="البليدة">البليدة</option><option value="عنابة">عنابة</option><option value="الشارقة">الشارقة</option><option value="أخرى">ولاية أخرى</option></select></div>
+                <div><label class="block text-sm font-bold text-gray-700 mb-1">العنوان التفصيلي *</label><textarea id="qb-address" required placeholder="الحي، اسم الشارع، رقم العمارة..." class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition" rows="3"></textarea></div>
                 <div class="flex flex-col md:flex-row gap-4 pt-4 border-t mt-4">
-                    <!-- زر الإضافة للسلة (لمن يريد التسوق الطبيعي) -->
-                    <button type="button" onclick="addToCart(currentProductId)" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition border border-gray-300">
-                        + أضف للسلة وتسوق
-                    </button>
-                    
-                    <!-- زر الشراء السريع -->
-                    <button type="submit" class="flex-[2] bg-green-500 text-white font-bold py-3 rounded-xl hover:bg-green-600 shadow-lg shadow-green-500/30 transition flex items-center justify-center gap-2">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-1.523-.001-3.012.353-4.373 1.04l-5.089-1.336 1.356 5.065c-.649 1.331-.999 2.79-.999 4.312z"/></svg>
-                        إرسال الطلب الآن
-                    </button>
+                    <button type="button" onclick="addToCart(currentProductId)" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition border border-gray-300">+ أضف للسلة</button>
+                    <button type="submit" class="flex-[2] bg-green-500 text-white font-bold py-3 rounded-xl hover:bg-green-600 shadow-lg shadow-green-500/30 transition flex items-center justify-center gap-2"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-1.523-.001-3.012.353-4.373 1.04l-5.089-1.336 1.356 5.065c-.649 1.331-.999 2.79-.999 4.312z"/></svg>إرسال الطلب الآن</button>
                 </div>
             </form>
         </div>
@@ -170,72 +65,34 @@
         const urlParams = new URLSearchParams(window.location.search);
         const productId = parseInt(urlParams.get('id'));
         currentProductId = productId;
-        
         const container = document.getElementById('product-detail');
         const product = productsData.find(p => p.id === productId);
 
         if (product) {
             document.title = product.name + " - Maro Shop";
-            container.innerHTML = `
-                <div class="grid md:grid-cols-2 gap-0 md:gap-8">
-                    <div class="bg-gray-100 h-64 md:h-auto relative group overflow-hidden">
-                        <img src="${product.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 md:p-8 flex flex-col justify-center">
-                        <span class="bg-red-100 text-red-600 text-xs font-bold px-3 py-1 rounded-full w-fit mb-3">متوفر</span>
-                        <h1 class="text-3xl font-black text-gray-900 mb-2 leading-tight">${product.name}</h1>
-                        <p class="text-3xl text-red-600 font-bold mb-6">${product.price.toLocaleString()} د.ج</p>
-                        <p class="text-gray-600 leading-relaxed mb-8 text-lg bg-gray-50 p-4 rounded-xl border border-gray-100">
-                            ${product.desc}
-                        </p>
-                    </div>
-                </div>
-            `;
+            container.innerHTML = `<div class="grid md:grid-cols-2 gap-0 md:gap-8"><div class="bg-gray-100 h-64 md:h-auto relative group overflow-hidden"><img src="${product.img}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"></div><div class="p-6 md:p-8 flex flex-col justify-center"><span class="bg-red-100 text-red-600 text-xs font-bold px-3 py-1 rounded-full w-fit mb-3">متوفر</span><h1 class="text-3xl font-black text-gray-900 mb-2 leading-tight">${product.name}</h1><p class="text-3xl text-red-600 font-bold mb-6">${product.price.toLocaleString()} د.ج</p><p class="text-gray-600 leading-relaxed mb-8 text-lg bg-gray-50 p-4 rounded-xl border border-gray-100">${product.desc}</p></div></div>`;
         } else {
-            container.innerHTML = `
-                <div class="p-10 text-center flex flex-col items-center">
-                    <div class="text-red-500 mb-4"><svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
-                    <h2 class="text-2xl font-bold text-gray-800 mb-2">المنتج غير موجود</h2>
-                    <p class="text-gray-500 mb-6">عذراً، لم نتمكن من العثور على المنتج.</p>
-                    <a href="index.html" class="inline-block bg-red-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-red-700">العودة للرئيسية</a>
-                </div>
-            `;
+            container.innerHTML = `<div class="p-10 text-center flex flex-col items-center"><div class="text-red-500 mb-4"><svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><h2 class="text-2xl font-bold text-gray-800 mb-2">المنتج غير موجود</h2><p class="text-gray-500 mb-6">عذراً، لم نتمكن من العثور على المنتج.</p><a href="index.html" class="inline-block bg-red-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-red-700">العودة للرئيسية</a></div>`;
         }
 
-        // ==========================================
-        // دالة الشراء السريع (Quick Buy Logic)
-        // ==========================================
         function handleQuickBuy(e) {
-            e.preventDefault(); // منع إعادة تحميل الصفحة
-            
-            if(!product) return; // تأكد من وجود المنتج
-
-            // 1. جلب البيانات من النموذج
+            e.preventDefault();
+            if(!product) return;
             const name = document.getElementById('qb-name').value;
             const phone = document.getElementById('qb-phone').value;
             const wilaya = document.getElementById('qb-wilaya').value;
             const address = document.getElementById('qb-address').value;
-
-            // 2. تجهيز رسالة الواتساب
-            let message = `*🛒 طلب جديد (شراء سريع)* %0A%0A`;
-            message += `*📦 المنتج:* ${product.name} %0A`;
-            message += `*💰 السعر:* ${product.price.toLocaleString()} د.ج %0A`;
-            message += `-------------------%0A`;
-            message += `*👤 بيانات العميل:* %0A`;
-            message += `الاسم: ${name} %0A`;
-            message += `الهاتف: ${phone} %0A`;
-            message += `الولاية: ${wilaya} %0A`;
-            message += `العنوان: ${address} %0A`;
-            message += `-------------------%0A`;
-            message += `تم الطلب مباشرة من صفحة المنتج.`;
-
-            // 3. فتح الواتساب
-            // ⚠️ استبدل 213600000000 برقمك الحقيقي
-            const phoneNumber = "+213775739494"; 
+            let message = `*🛒 طلب جديد (شراء سريع)* %0A%0A*📦 المنتج:* ${product.name} %0A*💰 السعر:* ${product.price.toLocaleString()} د.ج %0A-------------------%0A*👤 بيانات العميل:* %0Aالاسم: ${name} %0Aالهاتف: ${phone} %0Aالولاية: ${wilaya} %0Aالعنوان: ${address} %0A-------------------%0Aتم الطلب مباشرة من صفحة المنتج.`;
+            const phoneNumber = "213600000000"; 
             window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+        }
+
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value;
+                if(query.trim() !== "") window.location.href = `search.html?q=${query}`;
+            }
         }
     </script>
 </body>
 </html>
-
-
