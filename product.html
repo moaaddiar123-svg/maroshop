@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-gray-50 pb-20">
-    <!-- الهيدر (معدل ليشمل زر الرجوع + البحث) -->
+    <!-- الهيدر -->
     <header class="bg-red-600 text-white p-4 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <!-- الصف العلوي: العودة، العنوان، السلة -->
             <div class="flex justify-between w-full md:w-auto items-center">
                 <button onclick="history.back()" class="hover:bg-white/10 p-2 rounded-full transition">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
@@ -22,7 +21,6 @@
                     <span id="cart-count" class="bg-orange-500 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
                 </a>
             </div>
-            <!-- الصف السفلي: البحث -->
             <div class="w-full md:w-1/2 relative">
                 <input type="text" placeholder="ابحث عن منتج آخر..." class="w-full p-2.5 pl-10 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-400 shadow-inner" onkeydown="handleSearch(event)">
                 <svg class="w-5 h-5 text-gray-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -46,73 +44,93 @@
             <p class="text-gray-500 text-sm mb-6">أكمل بياناتك أدناه لإرسال طلب هذا المنتج فوراً عبر واتساب.</p>
             <form id="quick-buy-form" onsubmit="handleQuickBuy(event)" class="space-y-4">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div><label class="block text-sm font-bold text-gray-700 mb-1">الاسم الكامل *</label><input type="text" id="qb-name" required placeholder="مثال: أحمد بن علي" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition"></div>
-                    <div><label class="block text-sm font-bold text-gray-700 mb-1">رقم الهاتف *</label><input type="tel" id="qb-phone" required placeholder="05XX XX XX XX" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition"></div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">الاسم الكامل *</label>
+                        <input type="text" id="qb-name" required placeholder="مثال: أحمد بن علي" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-1">رقم الهاتف *</label>
+                        <input type="tel" id="qb-phone" required placeholder="05XX XX XX XX" class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition">
+                    </div>
                 </div>
-               <select required class="w-full border p-3 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-red-500">
-    <option value="" disabled selected>اختر الولاية *</option>
-    <option value="01 أدرار">01 - أدرار</option>
-    <option value="02 الشلف">02 - الشلف</option>
-    <option value="03 الأغواط">03 - الأغواط</option>
-    <option value="04 أم البواقي">04 - أم البواقي</option>
-    <option value="05 باتنة">05 - باتنة</option>
-    <option value="06 بجاية">06 - بجاية</option>
-    <option value="07 بسكرة">07 - بسكرة</option>
-    <option value="08 بشار">08 - بشار</option>
-    <option value="09 البليدة">09 - البليدة</option>
-    <option value="10 البويرة">10 - البويرة</option>
-    <option value="11 تمنراست">11 - تمنراست</option>
-    <option value="12 تبسة">12 - تبسة</option>
-    <option value="13 تلمسان">13 - تلمسان</option>
-    <option value="14 تيارت">14 - تيارت</option>
-    <option value="15 تيزي وزو">15 - تيزي وزو</option>
-    <option value="16 الجزائر">16 - الجزائر</option>
-    <option value="17 الجلفة">17 - الجلفة</option>
-    <option value="18 جيجل">18 - جيجل</option>
-    <option value="19 سطيف">19 - سطيف</option>
-    <option value="20 سعيدة">20 - سعيدة</option>
-    <option value="21 سكيكدة">21 - سكيكدة</option>
-    <option value="22 سيدي بلعباس">22 - سيدي بلعباس</option>
-    <option value="23 عنابة">23 - عنابة</option>
-    <option value="24 قالمة">24 - قالمة</option>
-    <option value="25 قسنطينة">25 - قسنطينة</option>
-    <option value="26 المدية">26 - المدية</option>
-    <option value="27 مستغانم">27 - مستغانم</option>
-    <option value="28 المسيلة">28 - المسيلة</option>
-    <option value="29 معسكر">29 - معسكر</option>
-    <option value="30 ورقلة">30 - ورقلة</option>
-    <option value="31 وهران">31 - وهران</option>
-    <option value="32 البيض">32 - البيض</option>
-    <option value="33 إليزي">33 - إليزي</option>
-    <option value="34 برج بوعريريج">34 - برج بوعريريج</option>
-    <option value="35 بومرداس">35 - بومرداس</option>
-    <option value="36 الطارف">36 - الطارف</option>
-    <option value="37 تندوف">37 - تندوف</option>
-    <option value="38 تيسمسيلت">38 - تيسمسيلت</option>
-    <option value="39 الوادي">39 - الوادي</option>
-    <option value="40 خنشلة">40 - خنشلة</option>
-    <option value="41 سوق أهراس">41 - سوق أهراس</option>
-    <option value="42 تيبازة">42 - تيبازة</option>
-    <option value="43 ميلة">43 - ميلة</option>
-    <option value="44 عين الدفلى">44 - عين الدفلى</option>
-    <option value="45 النعامة">45 - النعامة</option>
-    <option value="46 عين تموشنت">46 - عين تموشنت</option>
-    <option value="47 غرداية">47 - غرداية</option>
-    <option value="48 غليزان">48 - غليزان</option>
-    <option value="49 تيميمون">49 - تيميمون</option>
-    <option value="50 برج باجي مختار">50 - برج باجي مختار</option>
-    <option value="51 أولاد جلال">51 - أولاد جلال</option>
-    <option value="52 بني عباس">52 - بني عباس</option>
-    <option value="53 إن صالح">53 - إن صالح</option>
-    <option value="54 إن قزام">54 - إن قزام</option>
-    <option value="55 تقرت">55 - تقرت</option>
-    <option value="56 جانت">56 - جانت</option>
-    <option value="57 المغير">57 - المغير</option>
-    <option value="58 المنيعة">58 - المنيعة</option>
-</select>
+               
+                <!-- تم إصلاح: إضافة id="qb-wilaya" -->
+                <select id="qb-wilaya" required class="w-full border p-3 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-red-500">
+                    <option value="" disabled selected>اختر الولاية *</option>
+                    <option value="01 أدرار">01 - أدرار</option>
+                    <option value="02 الشلف">02 - الشلف</option>
+                    <option value="03 الأغواط">03 - الأغواط</option>
+                    <option value="04 أم البواقي">04 - أم البواقي</option>
+                    <option value="05 باتنة">05 - باتنة</option>
+                    <option value="06 بجاية">06 - بجاية</option>
+                    <option value="07 بسكرة">07 - بسكرة</option>
+                    <option value="08 بشار">08 - بشار</option>
+                    <option value="09 البليدة">09 - البليدة</option>
+                    <option value="10 البويرة">10 - البويرة</option>
+                    <option value="11 تمنراست">11 - تمنراست</option>
+                    <option value="12 تبسة">12 - تبسة</option>
+                    <option value="13 تلمسان">13 - تلمسان</option>
+                    <option value="14 تيارت">14 - تيارت</option>
+                    <option value="15 تيزي وزو">15 - تيزي وزو</option>
+                    <option value="16 الجزائر">16 - الجزائر</option>
+                    <option value="17 الجلفة">17 - الجلفة</option>
+                    <option value="18 جيجل">18 - جيجل</option>
+                    <option value="19 سطيف">19 - سطيف</option>
+                    <option value="20 سعيدة">20 - سعيدة</option>
+                    <option value="21 سكيكدة">21 - سكيكدة</option>
+                    <option value="22 سيدي بلعباس">22 - سيدي بلعباس</option>
+                    <option value="23 عنابة">23 - عنابة</option>
+                    <option value="24 قالمة">24 - قالمة</option>
+                    <option value="25 قسنطينة">25 - قسنطينة</option>
+                    <option value="26 المدية">26 - المدية</option>
+                    <option value="27 مستغانم">27 - مستغانم</option>
+                    <option value="28 المسيلة">28 - المسيلة</option>
+                    <option value="29 معسكر">29 - معسكر</option>
+                    <option value="30 ورقلة">30 - ورقلة</option>
+                    <option value="31 وهران">31 - وهران</option>
+                    <option value="32 البيض">32 - البيض</option>
+                    <option value="33 إليزي">33 - إليزي</option>
+                    <option value="34 برج بوعريريج">34 - برج بوعريريج</option>
+                    <option value="35 بومرداس">35 - بومرداس</option>
+                    <option value="36 الطارف">36 - الطارف</option>
+                    <option value="37 تندوف">37 - تندوف</option>
+                    <option value="38 تيسمسيلت">38 - تيسمسيلت</option>
+                    <option value="39 الوادي">39 - الوادي</option>
+                    <option value="40 خنشلة">40 - خنشلة</option>
+                    <option value="41 سوق أهراس">41 - سوق أهراس</option>
+                    <option value="42 تيبازة">42 - تيبازة</option>
+                    <option value="43 ميلة">43 - ميلة</option>
+                    <option value="44 عين الدفلى">44 - عين الدفلى</option>
+                    <option value="45 النعامة">45 - النعامة</option>
+                    <option value="46 عين تموشنت">46 - عين تموشنت</option>
+                    <option value="47 غرداية">47 - غرداية</option>
+                    <option value="48 غليزان">48 - غليزان</option>
+                    <option value="49 تيميمون">49 - تيميمون</option>
+                    <option value="50 برج باجي مختار">50 - برج باجي مختار</option>
+                    <option value="51 أولاد جلال">51 - أولاد جلال</option>
+                    <option value="52 بني عباس">52 - بني عباس</option>
+                    <option value="53 إن صالح">53 - إن صالح</option>
+                    <option value="54 إن قزام">54 - إن قزام</option>
+                    <option value="55 تقرت">55 - تقرت</option>
+                    <option value="56 جانت">56 - جانت</option>
+                    <option value="57 المغير">57 - المغير</option>
+                    <option value="58 المنيعة">58 - المنيعة</option>
+                </select>
+
+                <!-- تم الإضافة: حقل العنوان المفقود -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">العنوان التفصيلي *</label>
+                    <textarea id="qb-address" required placeholder="الحي، اسم الشارع، رقم العمارة..." class="w-full border p-3 rounded-lg bg-gray-50 focus:ring-2 focus:ring-green-500 outline-none transition" rows="3"></textarea>
+                </div>
+
                 <div class="flex flex-col md:flex-row gap-4 pt-4 border-t mt-4">
-                    <button type="button" onclick="addToCart(currentProductId)" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition border border-gray-300">+ أضف للسلة</button>
-                    <button type="submit" class="flex-[2] bg-green-500 text-white font-bold py-3 rounded-xl hover:bg-green-600 shadow-lg shadow-green-500/30 transition flex items-center justify-center gap-2"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-1.523-.001-3.012.353-4.373 1.04l-5.089-1.336 1.356 5.065c-.649 1.331-.999 2.79-.999 4.312z"/></svg>إرسال الطلب الآن</button>
+                    <button type="button" onclick="addToCart(currentProductId)" class="flex-1 bg-gray-100 text-gray-700 font-bold py-3 rounded-xl hover:bg-gray-200 transition border border-gray-300">
+                        + أضف للسلة
+                    </button>
+                    <button type="submit" class="flex-[2] bg-green-500 text-white font-bold py-3 rounded-xl hover:bg-green-600 shadow-lg shadow-green-500/30 transition flex items-center justify-center gap-2">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-1.523-.001-3.012.353-4.373 1.04l-5.089-1.336 1.356 5.065c-.649 1.331-.999 2.79-.999 4.312z"/></svg>
+                        إرسال الطلب الآن
+                    </button>
                 </div>
             </form>
         </div>
@@ -134,43 +152,41 @@
             container.innerHTML = `<div class="p-10 text-center flex flex-col items-center"><div class="text-red-500 mb-4"><svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div><h2 class="text-2xl font-bold text-gray-800 mb-2">المنتج غير موجود</h2><p class="text-gray-500 mb-6">عذراً، لم نتمكن من العثور على المنتج.</p><a href="index.html" class="inline-block bg-red-600 text-white px-6 py-2 rounded-xl font-bold hover:bg-red-700">العودة للرئيسية</a></div>`;
         }
 
-        function handleCartCheckout(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('c-name').value;
-    const phone = document.getElementById('c-phone').value;
-    const wilaya = document.getElementById('c-wilaya').value;
-    const address = document.getElementById('c-address').value;
+        // تم الإصلاح: دالة الشراء السريع الصحيحة
+        function handleQuickBuy(e) {
+            e.preventDefault();
+            if(!product) return;
 
-    let message = `*طلب جديد (من السلة)* %0A%0A`;
-    message += `----------------%0A`;
-    message += `*بيانات العميل:* %0A`;
-    message += `الاسم: ${name} %0A`;
-    message += `الهاتف: ${phone} %0A`;
-    message += `الولاية: ${wilaya} %0A`;
-    message += `العنوان: ${address} %0A`;
-    message += `----------------%0A`;
-    message += `*المنتجات:* %0A`;
-    
-    let total = 0;
-    cart.forEach(item => {
-        total += item.price * item.qty;
-        message += `- ${item.name} (x${item.qty}) : ${(item.price * item.qty).toLocaleString()} د.ج %0A`;
-    });
+            const name = document.getElementById('qb-name').value;
+            const phone = document.getElementById('qb-phone').value;
+            const wilaya = document.getElementById('qb-wilaya').value;
+            const address = document.getElementById('qb-address').value;
 
-    message += `----------------%0A`;
-    message += `*المجموع:* ${total.toLocaleString()} د.ج`;
+            // استخدمت الرقم الذي حاولت وضعه (213775739494)
+            const phoneNumber = "213775739494"; 
+            
+            let message = `*🛒 طلب جديد (شراء سريع)* %0A%0A`;
+            message += `*📦 المنتج:* ${product.name} %0A`;
+            message += `*💰 السعر:* ${product.price.toLocaleString()} د.ج %0A`;
+            message += `-------------------%0A`;
+            message += `*👤 بيانات العميل:* %0A`;
+            message += `الاسم: ${name} %0A`;
+            message += `الهاتف: ${phone} %0A`;
+            message += `الولاية: ${wilaya} %0A`;
+            message += `العنوان: ${address} %0A`;
+            message += `-------------------%0A`;
+            message += `تم الطلب مباشرة من صفحة المنتج.`;
 
-    localStorage.removeItem('maroCart');
-    
-    // ==========================================
-    // غيّر الرقم هنا أيضاً (نفس الرقم)
-    // ==========================================
-    window.open(`https://wa.me/213775739494?text=${message}`, '_blank');
-}
+            window.open(`https://wa.me/${213775739494}?text=${message}`, '_blank');
+        }
+
+        // دالة البحث
+        function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value;
+                if(query.trim() !== "") window.location.href = `search.html?q=${query}`;
+            }
         }
     </script>
 </body>
 </html>
-
-
