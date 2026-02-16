@@ -29,7 +29,67 @@
             <form onsubmit="handleCartCheckout(event)" class="space-y-4">
                 <input type="text" id="c-name" required placeholder="الاسم الكامل *" class="w-full border p-3 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-red-500">
                 <input type="tel" id="c-phone" required placeholder="رقم الهاتف *" class="w-full border p-3 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-red-500">
-                <select id="c-wilaya" required class="w-full border p-3 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-red-500"><option value="">اختر الولاية *</option><option value="الجزائر">الجزائر</option><option value="وهران">وهران</option><option value="قسنطينة">قسنطينة</option><option value="سطيف">سطيف</option><option value="البليدة">البليدة</option><option value="عنابة">عنابة</option><option value="أخرى">أخرى</option></select>
+               <select required class="w-full border p-3 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-red-500">
+    <option value="" disabled selected>اختر الولاية *</option>
+    <option value="01 أدرار">01 - أدرار</option>
+    <option value="02 الشلف">02 - الشلف</option>
+    <option value="03 الأغواط">03 - الأغواط</option>
+    <option value="04 أم البواقي">04 - أم البواقي</option>
+    <option value="05 باتنة">05 - باتنة</option>
+    <option value="06 بجاية">06 - بجاية</option>
+    <option value="07 بسكرة">07 - بسكرة</option>
+    <option value="08 بشار">08 - بشار</option>
+    <option value="09 البليدة">09 - البليدة</option>
+    <option value="10 البويرة">10 - البويرة</option>
+    <option value="11 تمنراست">11 - تمنراست</option>
+    <option value="12 تبسة">12 - تبسة</option>
+    <option value="13 تلمسان">13 - تلمسان</option>
+    <option value="14 تيارت">14 - تيارت</option>
+    <option value="15 تيزي وزو">15 - تيزي وزو</option>
+    <option value="16 الجزائر">16 - الجزائر</option>
+    <option value="17 الجلفة">17 - الجلفة</option>
+    <option value="18 جيجل">18 - جيجل</option>
+    <option value="19 سطيف">19 - سطيف</option>
+    <option value="20 سعيدة">20 - سعيدة</option>
+    <option value="21 سكيكدة">21 - سكيكدة</option>
+    <option value="22 سيدي بلعباس">22 - سيدي بلعباس</option>
+    <option value="23 عنابة">23 - عنابة</option>
+    <option value="24 قالمة">24 - قالمة</option>
+    <option value="25 قسنطينة">25 - قسنطينة</option>
+    <option value="26 المدية">26 - المدية</option>
+    <option value="27 مستغانم">27 - مستغانم</option>
+    <option value="28 المسيلة">28 - المسيلة</option>
+    <option value="29 معسكر">29 - معسكر</option>
+    <option value="30 ورقلة">30 - ورقلة</option>
+    <option value="31 وهران">31 - وهران</option>
+    <option value="32 البيض">32 - البيض</option>
+    <option value="33 إليزي">33 - إليزي</option>
+    <option value="34 برج بوعريريج">34 - برج بوعريريج</option>
+    <option value="35 بومرداس">35 - بومرداس</option>
+    <option value="36 الطارف">36 - الطارف</option>
+    <option value="37 تندوف">37 - تندوف</option>
+    <option value="38 تيسمسيلت">38 - تيسمسيلت</option>
+    <option value="39 الوادي">39 - الوادي</option>
+    <option value="40 خنشلة">40 - خنشلة</option>
+    <option value="41 سوق أهراس">41 - سوق أهراس</option>
+    <option value="42 تيبازة">42 - تيبازة</option>
+    <option value="43 ميلة">43 - ميلة</option>
+    <option value="44 عين الدفلى">44 - عين الدفلى</option>
+    <option value="45 النعامة">45 - النعامة</option>
+    <option value="46 عين تموشنت">46 - عين تموشنت</option>
+    <option value="47 غرداية">47 - غرداية</option>
+    <option value="48 غليزان">48 - غليزان</option>
+    <option value="49 تيميمون">49 - تيميمون</option>
+    <option value="50 برج باجي مختار">50 - برج باجي مختار</option>
+    <option value="51 أولاد جلال">51 - أولاد جلال</option>
+    <option value="52 بني عباس">52 - بني عباس</option>
+    <option value="53 إن صالح">53 - إن صالح</option>
+    <option value="54 إن قزام">54 - إن قزام</option>
+    <option value="55 تقرت">55 - تقرت</option>
+    <option value="56 جانت">56 - جانت</option>
+    <option value="57 المغير">57 - المغير</option>
+    <option value="58 المنيعة">58 - المنيعة</option>
+</select>
                 <textarea id="c-address" required placeholder="العنوان التفصيلي *" class="w-full border p-3 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-red-500" rows="2"></textarea>
                 <div class="pt-4"><button type="submit" class="w-full bg-green-500 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-green-600 transition flex items-center justify-center gap-2"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-1.523-.001-3.012.353-4.373 1.04l-5.089-1.336 1.356 5.065c-.649 1.331-.999 2.79-.999 4.312z"/></svg>إرسال الطلب الكامل للواتساب</button></div>
             </form>
@@ -83,3 +143,4 @@
     </script>
 </body>
 </html>
+
