@@ -51,44 +51,20 @@
         const catContainer = document.getElementById('categories-grid');
         const prodContainer = document.getElementById('featured-products');
 
-        // إنشاء أزرار الأقسام مع الروابط الصحيحة
         categories.forEach(cat => {
             if(cat.id === 'all') return;
             const link = document.createElement('a');
-            
-            // هام جداً: الرابط يستخدم cat.id (مثلاً: 'ملابس')
-            // هذا الـ ID يجب أن يطابق حقل cat في المنتجات
             link.href = `category.html?cat=${cat.id}`;
-            
             link.className = 'bg-white p-6 rounded-xl shadow-sm text-center hover:shadow-lg transition hover:bg-red-50 group border border-gray-100 block';
-            link.innerHTML = `
-                <div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-600 group-hover:text-white transition">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
-                </div>
-                <h3 class="font-bold text-gray-700 group-hover:text-red-600 transition">${cat.name}</h3>
-            `;
+            link.innerHTML = `<div class="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-600 group-hover:text-white transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg></div><h3 class="font-bold text-gray-700 group-hover:text-red-600 transition">${cat.name}</h3>`;
             catContainer.appendChild(link);
         });
 
-        // عرض المنتجات
         productsData.forEach(p => {
             const link = document.createElement('a');
             link.href = `product.html?id=${p.id}`;
             link.className = 'product-card block bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100';
-            link.innerHTML = `
-                <div class="relative aspect-square bg-gray-100 overflow-hidden">
-                    <img src="${p.img}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                </div>
-                <div class="p-4">
-                    <h3 class="font-bold text-gray-800 mb-2 truncate">${p.name}</h3>
-                    <div class="flex justify-between items-center">
-                        <p class="text-red-600 font-bold text-lg">${p.price.toLocaleString()} د.ج</p>
-                        <button class="bg-gray-100 p-2 rounded-full text-red-600 hover:bg-red-600 hover:text-white transition pointer-events-none">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            `;
+            link.innerHTML = `<div class="relative aspect-square bg-gray-100 overflow-hidden"><img src="${p.img}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110"></div><div class="p-4"><h3 class="font-bold text-gray-800 mb-2 truncate">${p.name}</h3><div class="flex justify-between items-center"><p class="text-red-600 font-bold text-lg">${p.price.toLocaleString()} د.ج</p><button class="bg-gray-100 p-2 rounded-full text-red-600 hover:bg-red-600 hover:text-white transition pointer-events-none"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button></div></div>`;
             prodContainer.appendChild(link);
         });
 
