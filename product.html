@@ -153,31 +153,34 @@
         }
 
         // تم الإصلاح: دالة الشراء السريع الصحيحة
-        function handleQuickBuy(e) {
-            e.preventDefault();
-            if(!product) return;
+       function handleQuickBuy(e) {
+    e.preventDefault();
+    if(!product) return;
 
-            const name = document.getElementById('qb-name').value;
-            const phone = document.getElementById('qb-phone').value;
-            const wilaya = document.getElementById('qb-wilaya').value;
-            const address = document.getElementById('qb-address').value;
+    const name = document.getElementById('qb-name').value;
+    const phone = document.getElementById('qb-phone').value;
+    const wilaya = document.getElementById('qb-wilaya').value;
+    const address = document.getElementById('qb-address').value;
 
-            // استخدمت الرقم الذي حاولت وضعه (213775739494)
-            const phoneNumber = "213775739494"; 
-            
-            let message = `*🛒 طلب جديد (شراء سريع)* %0A%0A`;
-            message += `*📦 المنتج:* ${product.name} %0A`;
-            message += `*💰 السعر:* ${product.price.toLocaleString()} د.ج %0A`;
-            message += `-------------------%0A`;
-            message += `*👤 بيانات العميل:* %0A`;
-            message += `الاسم: ${name} %0A`;
-            message += `الهاتف: ${phone} %0A`;
-            message += `الولاية: ${wilaya} %0A`;
-            message += `العنوان: ${address} %0A`;
-            message += `-------------------%0A`;
-            message += `تم الطلب مباشرة من صفحة المنتج.`;
+    const phoneNumber = "213775739494"; 
+    
+    let message = `*🛒 طلب جديد (شراء سريع)* %0A%0A`;
+    message += `*📦 المنتج:* ${product.name} %0A`;
+    message += `*💰 السعر:* ${product.price.toLocaleString()} د.ج %0A`;
+    message += `-------------------%0A`;
+    message += `*👤 بيانات العميل:* %0A`;
+    message += `الاسم: ${name} %0A`;
+    message += `الهاتف: ${phone} %0A`;
+    message += `الولاية: ${wilaya} %0A`;
+    message += `العنوان: ${address} %0A`;
+    message += `-------------------%0A`;
+    message += `تم الطلب مباشرة من صفحة المنتج.`;
 
-            window.open(`https://wa.me/${213775739494}?text=${message}`, '_blank');
+    window.open(`https://wa.me/${213775739494}?text=${message}`, '_blank');
+    
+    // الانتقال لصفحة الشكر بعد فتح الواتساب
+    window.location.href = 'thankyou.html';
+}
         }
 
         // دالة البحث
@@ -190,3 +193,4 @@
     </script>
 </body>
 </html>
+
