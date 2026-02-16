@@ -43,7 +43,7 @@ const productsData = [
     { id: 24, name: 'خزانة أطباق زجاج', price: 22000, cat: 'أثاث', img: 'https://images.unsplash.com/photo-1556909220-2748a99d47e9?w=600', desc: 'خزانة أطباق زجاجية أنيقة مع إضاءة داخلية.' },
 
     // --- رياضة (6 منتجات) ---
-    { id: 25, name: 'طقم دمبلز منزلي', price: 12000, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1588376527901-6c2890747867?w=600', desc: 'طقم دمبلز قابل لتغيير الوزن من 2 كيلو إلى 20 كيلو.' },
+    { id: 25, name: 'شريط مقاومة', price: 12000, cat: 'رياضة', img: 'https://www.nedshoop.com/web/image/product.product/775/image_1024/bande%20de%20Resistance%20%28copie%29?unique=4848a2f', desc: 'طقم دمبلز قابل لتغيير الوزن من 2 كيلو إلى 20 كيلو.' },
     { id: 26, name: 'سجادة يوغا احترافية', price: 2500, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600', desc: 'سجادة يوغا سميكة ومضادة للانزلاق.' },
     { id: 27, name: 'كرة قدم احترافية', price: 3200, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1614632537197-38a17061c2bd?w=600', desc: 'كرة قدم بحجم 5 ومادة عالية الجودة.' },
     { id: 28, name: 'حقيبة رياضية كبيرة', price: 4800, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600', desc: 'حقيبة رياضية كبيرة مع جيوب متعددة للأحذية.' },
@@ -87,3 +87,4 @@ function updateCartCount() {
 }
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
+
