@@ -3,7 +3,7 @@
 // قائمة الأقسام (Categories)
 const categories = [
     { id: 'all', name: 'الرئيسية' },
-    { id: 'كهربائية', name: 'أجهزة كهربائية' },
+    { id: 'كهربائية', name: 'أجهزة منزلية و كهربائية' },
     { id: 'ملابس', name: 'ملابس' },
     { id: 'جوالات', name: 'جوالات وملحقاتها' },
     { id: 'أثاث', name: 'أثاث وتخزين' },
@@ -71,5 +71,6 @@ function updateCartCount() {
 }
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
+
 
 
