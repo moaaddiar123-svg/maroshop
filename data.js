@@ -16,6 +16,7 @@ const productsData = [
     // --- كهربائية ---
     { id: 1, name: 'ماكينة قهوة فاخرة', price: 12500, cat: 'كهربائية', img: 'https://images.unsplash.com/photo-1574227492706-f4254bc76df8?w=600', desc: 'ماكينة قهوة احترافية مع ضغط عالي.' },
     { id: 2, name: 'خلاط كهربائي متعدد', price: 5900, cat: 'كهربائية', img: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=600', desc: 'خلاط قوي 1000 واط لهرس الخضار والفواكه.' },
+    { id: 3, name: 'موزع ورق', price: 1500, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/622/image_1024/Distributeur%20Papier%20%28copie%29?unique=9667536', desc: ' حامل ثلاثي العجلات مزود بمنزلقين من الألومنيوم لتقطيع الطعام وغشاء شفاف. بالإضافة إلى حجرة تخزين إضافية للأغراض مثل التوابل أو القطع الصغيرة' },
     
     // --- ملابس ---
     { id: 3, name: 'جاكيتة رجالي صيفي', price: 4500, cat: 'ملابس', img: 'https://images.unsplash.com/photo-1521572163474-6864f9a17cc?w=600', desc: 'جاكيتة خفيفة ومريحة مناسبة للفصل الدافئ.' },
@@ -70,3 +71,4 @@ function updateCartCount() {
 }
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
+
