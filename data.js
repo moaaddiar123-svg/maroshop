@@ -25,7 +25,7 @@ const productsData = [
     
     // --- جوالات ---
     { id: 7, name: 'هاتف ذكي 5G', price: 55000, cat: 'جوالات', img: 'https://images.unsplash.com/photo-1511703855734-44950d4e75e?w=600', desc: 'هاتف بكاميرا 108 ميجابيكسل وشاشة AMOLED.' },
-    { id: 78, name: 'سماعات بلوتوث', price: 3200, cat: 'جوالات', img: 'https://images.unsplash.com/photo-1592899637677-27d4dd8023ba?w=600', desc: 'سماعات لاسلكية مع عزل ضوضاء وميكروفون عالي الجودة.' },
+    { id: 8, name: 'سماعات بلوتوث', price: 3200, cat: 'جوالات', img: 'https://images.unsplash.com/photo-1592899637677-27d4dd8023ba?w=600', desc: 'سماعات لاسلكية مع عزل ضوضاء وميكروفون عالي الجودة.' },
     
     // --- أثاث ---
     { id: 9, name: 'كرسي مكتبي مريح', price: 9500, cat: 'أثاث', img: 'https://images.unsplash.com/photo-1505693314120-0d1db561277f?w=600', desc: 'كرسي مريح مع دعم للعمود الفقري للجلوس الطويل.' },
@@ -72,6 +72,7 @@ function updateCartCount() {
 }
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
+
 
 
 
