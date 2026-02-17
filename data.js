@@ -14,8 +14,8 @@ const categories = [
 // ملاحظة: تأكد أن حقل cat يطابق id واحد من الأقسام بالضبط
 const productsData = [
     // --- كهربائية ---
-    { id: 1, name: 'ماكينة قهوة فاخرة', price: 12500, cat: 'كهربائية', img: 'https://images.unsplash.com/photo-1574227492706-f4254bc76df8?w=600', desc: 'ماكينة قهوة احترافية مع ضغط عالي.' },
-    { id: 2, name: 'خلاط كهربائي متعدد', price: 5900, cat: 'كهربائية', img: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=600', desc: 'خلاط قوي 1000 واط لهرس الخضار والفواكه.' },
+    { id: 1, name: 'مفرمة طعام كهربائية متعددة الوظائف', price: 2400, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/804/image_1024/Electric%20Food%20Chopper%20Multifunction%20%28copie%29?unique=aa29207', desc: ' تصميم  مريح سهل التنظيف ولا يؤذي اليدين يتضمن ملعقة مسطحة و يكشط الطعام بسهولة   المواد: ABS + PP + AS + PC + فولاذ مقاوم للصدأ  الحجم: حوالي 18.5 × 13.1 × 93.8 سم / 7.28 × 5.16 × 3.68 بوصة سعة البطارية: 1200 مللي أمبير' },
+    { id: 2, name: 'مبراة سكاكين', price: 900, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/811/image_1024/Sharpener%20Aiguiseur%20De%20Couteaux%20%28copie%29?unique=b146e7a', desc: 'هذه أداة شحذ سكاكين عملية 3 في 1 لشحذ سكاكين المطبخ الباهتة. تحتوي على 3 فتحات (للسيراميك، والخشن، والناعم) لشحذ سكاكين الفولاذ المقاوم للصدأ  والسيراميك' },
     { id: 3, name: 'موزع ورق', price: 1500, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/622/image_1024/Distributeur%20Papier%20%28copie%29?unique=9667536', desc: ' حامل ثلاثي العجلات مزود بمنزلقين من الألومنيوم لتقطيع الطعام وغشاء شفاف. بالإضافة إلى حجرة تخزين إضافية للأغراض مثل التوابل أو القطع الصغيرة' },
     
     // --- ملابس ---
@@ -71,6 +71,7 @@ function updateCartCount() {
 }
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
+
 
 
 
