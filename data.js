@@ -18,22 +18,23 @@ const productsData = [
     { id: 2, name: 'مبراة سكاكين', price: 900, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/811/image_1024/Sharpener%20Aiguiseur%20De%20Couteaux%20%28copie%29?unique=b146e7a', desc: 'هذه أداة شحذ سكاكين عملية 3 في 1 لشحذ سكاكين المطبخ الباهتة. تحتوي على 3 فتحات (للسيراميك، والخشن، والناعم) لشحذ سكاكين الفولاذ المقاوم للصدأ  والسيراميك' },
     { id: 3, name: 'موزع ورق', price: 1500, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/622/image_1024/Distributeur%20Papier%20%28copie%29?unique=9667536', desc: ' حامل ثلاثي العجلات مزود بمنزلقين من الألومنيوم لتقطيع الطعام وغشاء شفاف. بالإضافة إلى حجرة تخزين إضافية للأغراض مثل التوابل أو القطع الصغيرة' },
     { id: 4, name: 'مفرمة كهربائية صغيرة لاسلكية ', price: 1400, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/632/image_1024/Mini%20Hachoir%20Electrique%20Sans%20Fil%20%28copie%29?unique=0ad32d8', desc: ' مفرمة اللحم مزودة بمكبس سهل الاستخدام و بضغطة زر بسيطة ستنجز المهمة باحترافية. أداة عالية الجودة مصنوعة من الفولاذ المقاوم للصدأ تتيح لك الفرم في ثوانٍ.' },
+    { id: 5, name: 'Panineuse بانينوز', price: 5300, cat: 'كهربائية', img: 'https://www.nedshoop.com/web/image/product.product/768/image_1024/Panineuse%20%28copie%29?unique=79952b5', desc: 'ألواح قوية غير لاصقة لسهولة التنظيف لها مؤشرات ضوئية لانخفاض الطاقة  سهلة  التشغيل و تحكم تلقائي في درجة الحرارة  بمساحة تخزين صغيرة و قواعد مانعة للانزلاق / سعة الطاقة 1500 واط ( ماركة أورفيك )' },
 
     // --- ملابس ---
-    { id: 5, name: 'جاكيتة رجالي صيفي', price: 4500, cat: 'ملابس', img: 'https://images.unsplash.com/photo-1521572163474-6864f9a17cc?w=600', desc: 'جاكيتة خفيفة ومريحة مناسبة للفصل الدافئ.' },
-    { id: 6, name: 'تيشيرت رياضي قطن', price: 2900, cat: 'ملابس', img: 'https://images.unsplash.com/photo-1594938298601-c71485980c4a?w=600', desc: 'تيشيرت قطن 100% يمتص العرق.' },
+    { id: 6, name: 'جاكيتة رجالي صيفي', price: 4500, cat: 'ملابس', img: 'https://images.unsplash.com/photo-1521572163474-6864f9a17cc?w=600', desc: 'جاكيتة خفيفة ومريحة مناسبة للفصل الدافئ.' },
+    { id: 7, name: 'تيشيرت رياضي قطن', price: 2900, cat: 'ملابس', img: 'https://images.unsplash.com/photo-1594938298601-c71485980c4a?w=600', desc: 'تيشيرت قطن 100% يمتص العرق.' },
     
     // --- جوالات ---
-    { id: 7, name: 'هاتف ذكي 5G', price: 55000, cat: 'جوالات', img: 'https://images.unsplash.com/photo-1511703855734-44950d4e75e?w=600', desc: 'هاتف بكاميرا 108 ميجابيكسل وشاشة AMOLED.' },
-    { id: 8, name: 'سماعات بلوتوث', price: 3200, cat: 'جوالات', img: 'https://images.unsplash.com/photo-1592899637677-27d4dd8023ba?w=600', desc: 'سماعات لاسلكية مع عزل ضوضاء وميكروفون عالي الجودة.' },
+    { id: 8, name: 'هاتف ذكي 5G', price: 55000, cat: 'جوالات', img: 'https://images.unsplash.com/photo-1511703855734-44950d4e75e?w=600', desc: 'هاتف بكاميرا 108 ميجابيكسل وشاشة AMOLED.' },
+    { id: 9, name: 'سماعات بلوتوث', price: 3200, cat: 'جوالات', img: 'https://images.unsplash.com/photo-1592899637677-27d4dd8023ba?w=600', desc: 'سماعات لاسلكية مع عزل ضوضاء وميكروفون عالي الجودة.' },
     
     // --- أثاث ---
-    { id: 9, name: 'كرسي مكتبي مريح', price: 9500, cat: 'أثاث', img: 'https://images.unsplash.com/photo-1505693314120-0d1db561277f?w=600', desc: 'كرسي مريح مع دعم للعمود الفقري للجلوس الطويل.' },
-    { id: 10, name: 'طاولة خشبية عصرية', price: 8500, cat: 'أثاث', img: 'https://images.unsplash.com/photo-1532372320572-c4df21d637d2?w=600', desc: 'طاولة خشبية أنيقة للصالة أو غرفة الطعام.' },
+    { id: 10, name: 'كرسي مكتبي مريح', price: 9500, cat: 'أثاث', img: 'https://images.unsplash.com/photo-1505693314120-0d1db561277f?w=600', desc: 'كرسي مريح مع دعم للعمود الفقري للجلوس الطويل.' },
+    { id: 11, name: 'طاولة خشبية عصرية', price: 8500, cat: 'أثاث', img: 'https://images.unsplash.com/photo-1532372320572-c4df21d637d2?w=600', desc: 'طاولة خشبية أنيقة للصالة أو غرفة الطعام.' },
     
     // --- رياضة ---
-    { id: 11, name: 'طقم دمبلز منزلي', price: 12000, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1588376527901-6c2890747867?w=600', desc: 'طقم دمبلز قابل لتغيير الوزن من 2 كيلو إلى 20 كيلو.' },
-    { id: 12, name: 'سجادة يوغا', price: 2500, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600', desc: 'سجادة يوغا سميكة ومضادة للانزلاق.' },
+    { id: 12, name: 'طقم دمبلز منزلي', price: 12000, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1588376527901-6c2890747867?w=600', desc: 'طقم دمبلز قابل لتغيير الوزن من 2 كيلو إلى 20 كيلو.' },
+    { id: 13, name: 'سجادة يوغا', price: 2500, cat: 'رياضة', img: 'https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=600', desc: 'سجادة يوغا سميكة ومضادة للانزلاق.' },
 ];
 
 // منطق السلة (Cart Logic) - لا تغيير هنا
@@ -72,6 +73,7 @@ function updateCartCount() {
 }
 
 document.addEventListener('DOMContentLoaded', updateCartCount);
+
 
 
 
